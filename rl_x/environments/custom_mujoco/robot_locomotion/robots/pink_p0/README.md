@@ -1,0 +1,1 @@
+Adapted from the Pink Robotics P0 simplified URDF (```data/p0_simplified.urdf```). Kinematics, masses, inertias, joint limits, torque limits and velocity limits are taken from the URDF. Foot contact boxes, PD gains, armatures and reward collision spheres were added for the locomotion environment.

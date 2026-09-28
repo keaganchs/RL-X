@@ -1,7 +1,7 @@
 # Robot Locomotion MuJoCo Environments
 
-Contains MuJoCo, MJX and MJX + Warp environments for a robot locomotion task with the Unitree Go2 quadruped and Unitree G1 humanoid robots.
-The resulting policies can be directly transferred to the real robots.
+Contains MuJoCo, MJX and MJX + Warp environments for a robot locomotion task with the Unitree Go2 quadruped, Unitree G1 humanoid and Pink Robotics P0 humanoid robots.
+The resulting policies for the Go2 and G1 can be directly transferred to the real robots.
 Example deployment code for the Go2 can be found [here](https://github.com/nico-bohlinger/RL-X/blob/master/rl_x/environments/custom_mujoco/robot_locomotion/deployment/unitree_go2/).
 
 The MuJoCo version is a copy of the MJX version but uses the standard MuJoCo physics engine, which makes it easier and quicker to load, visualize and debug policies trained in MJX.
@@ -14,7 +14,7 @@ On machines with a CUDA driver older than 12.4, the ```mjx_warp``` version must 
 The default configs from the ```flax_full_jit``` algorithms are optimized for many parallel environments and locomotion tasks, so they will work well out of the box.
 Additionally, when using ```ppo.flax_full_jit```, it is recommended to increase the ```entropy_coef``` to around ```0.002```, especially when using the ```hfield_diverse``` terrain, to continue to encourage exploration in the later stages of training.
 
-The learning environment is written in a way that makes it robot agnostic, so it can be used with different base robots (Go2, G1, etc.). The robots are defined in the ```rl_x/environments/custom_mujoco/robot_locomotion/robots/``` folder.
+The learning environment is written in a way that makes it robot agnostic, so it can be used with different base robots (Go2, G1, P0, etc.). The robots are defined in the ```rl_x/environments/custom_mujoco/robot_locomotion/robots/``` folder and are selected with ```--environment.train_robot``` (```unitree_go2```, ```unitree_g1``` or ```pink_p0```).
 The code structure and design decisions are based on a multi-embodiment learning [project](https://github.com/nico-bohlinger/one_policy_to_run_them_all).
 
 ## Testing a trained model

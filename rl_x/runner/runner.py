@@ -63,6 +63,8 @@ class Runner:
             if isinstance(render, str):
                 render = render.lower() == "true"
             app_launcher_args.headless = not render
+            if render:
+                app_launcher_args.visualizer = ["kit"]
             app_launcher_args.livestream = get_env_config_value("livestream")
             app_launcher_args.enable_cameras = get_env_config_value("enable_cameras")
             app_launcher_args.xr = get_env_config_value("xr")
@@ -103,7 +105,7 @@ class Runner:
 
         import gymnasium as gym
         # Silences the box bound precision warning for cartpole
-        gym.logger.set_level(40)
+        gym.logger.min_level = 40
 
         if algorithm_uses_torch:  
             # Avoids warning when TensorFloat32 is available

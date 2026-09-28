@@ -225,6 +225,7 @@ class PPO:
                         actual_next_state = next_state
                         # TODO: Use the correct actual_next_state for the torch data interface
                         dones_this_rollout += done.sum().item()
+                        saving_return_buffer.extend(np.asarray(info["episode_return"])[done.cpu().numpy()])
                     for key, info_value in self.train_env.get_logging_info_dict(info).items():
                         step_info_collection.setdefault(key, []).extend(info_value)
 

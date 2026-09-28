@@ -557,6 +557,8 @@ class LocomotionEnv:
 
     def merge_done(self, done, done_state, not_done_state):
         def where_leaf(reset_leaf, keep_leaf):
+            if jnp.ndim(reset_leaf) == 0:
+                return keep_leaf
             d = jnp.reshape(done, (self.nr_envs,) + (1,) * (jnp.ndim(reset_leaf) - 1))
             return jnp.where(d, reset_leaf, keep_leaf)
 

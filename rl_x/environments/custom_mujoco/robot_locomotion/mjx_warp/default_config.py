@@ -17,8 +17,8 @@ def get_config(environment_name):
         # Warp-backed batched data buffer sizes
         # naconmax_per_env is the maximum number of contacts per environment, njmax the maximum number of constraints per environment
         # Set either to None to measure the minimal needed value from the robot and terrain at construction (see buffer_sizing.py)
-        "naconmax_per_env": None,
-        "njmax": None,
+        "naconmax_per_env": config_dict.placeholder(int),
+        "njmax": config_dict.placeholder(int),
         "copy_train_env_for_eval": True,
         "train_robot": "unitree_go2",
         "control_type": "pd",
